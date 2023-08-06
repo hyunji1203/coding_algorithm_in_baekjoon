@@ -8,16 +8,17 @@ fun main() {
 
         val results = mutableListOf<Int>()
 
-        (0 until sizeOfParticipants.size).forEach { Firstindex ->
-            var a = 1
-            (0 until sizeOfParticipants.size).forEach { secondIndex ->
-                if (sizeOfParticipants[Firstindex][0] < sizeOfParticipants[secondIndex][0]) {
-                    if (sizeOfParticipants[Firstindex][1] < sizeOfParticipants[secondIndex][1]) {
-                        a++
+        sizeOfParticipants.forEach { first ->
+            var rank = 1
+            sizeOfParticipants.forEach { second ->
+                if (first[0] < second[0]) {
+                    if (first[1] < second[1]) {
+                        rank++
                     }
                 }
             }
-            results.add(a)
+            results.add(rank)
         }
+
         println(results.joinToString(" "))
     }
