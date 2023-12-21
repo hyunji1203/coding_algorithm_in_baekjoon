@@ -17,22 +17,13 @@ int main(){
     initTimes();
     cin >> a >> b >> c;
 
-    int fstart, fend;
-    int sstart, send;
-    int tstart, tend;
+    for(int i=0; i<3; i++){
+        int start, end;
+        cin >> start >> end;
 
-    cin >> fstart >> fend;
-    cin >> sstart >> send;
-    cin >> tstart >> tend;
-
-    for(int i= fstart; i<fend; i++){
+        for(int i= start; i<end; i++){
         times[i] += 1;
-    }
-    for(int i= sstart; i<send; i++){
-        times[i] += 1;
-    }
-    for(int i= tstart; i<tend; i++){
-        times[i] += 1;
+        }
     }
 
     for(int i: times){
