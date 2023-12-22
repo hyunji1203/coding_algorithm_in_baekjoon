@@ -11,9 +11,8 @@ string reverseWord = "";
 int main(){
     cin >> word;
 
-    for(int i=word.size() - 1; i>=0; i--){
-        reverseWord = reverseWord + word[i];
-    }
+    reverseWord = word;
+    reverse(reverseWord.begin(), reverseWord.end());
 
     if(word == reverseWord) {
         cout << 1 << "\n";
