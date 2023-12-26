@@ -22,22 +22,14 @@ int main(){
             string name, type;
             cin >> name >> type;
 
-            for(auto it: clothes){
-                if(it.first == type){
-                    clothes[it.first] = it.second + 1;
-                }
-            }
-            if(clothes.find(type) == clothes.end()){
-                clothes.insert({type, 1});
-            }
+            clothes[type]++;
         }
 
         int x = 1;
         for(auto it: clothes){
-            x = x * (it.second + 1);
+            x *= (it.second + 1);
         }
-        x = x - 1;
-        ret.push_back(x);
+        ret.push_back(x-1);
     }
 
     for(int it: ret){
