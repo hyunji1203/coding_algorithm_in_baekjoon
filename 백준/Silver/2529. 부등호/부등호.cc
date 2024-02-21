@@ -4,8 +4,7 @@ using namespace std;
 int k;
 long long min_value = LONG_MAX, max_value = LONG_MIN;
 int visited[10];
-char signs[10];
-vector<string> ret;
+vector<char> signs;
 vector<int> temp;
 
 bool judge(int a, int b, char c){
@@ -14,12 +13,14 @@ bool judge(int a, int b, char c){
 }
 
 void go(int idx){
-    if(temp.size() == k + 1) {
-        string s="";
+    if(temp.size() == signs.size() + 1) {
+        string s;
         for(int it: temp){
             s += to_string(it);
         }
-        ret.push_back(s);
+
+        min_value = min(stoll(s), min_value);
+        max_value = max(stoll(s), max_value);
         return;
     }
 
@@ -41,7 +42,9 @@ int main(){
 
     cin >> k;
     for(int i=0; i<k; i++){
-       cin >> signs[i];
+       char sign;
+       cin >> sign;
+       signs.push_back(sign); 
     }
 
     for(int i=0; i<=9; i++){
@@ -51,9 +54,7 @@ int main(){
         temp.pop_back();
         visited[i] = 0;
     }
-
-    sort(ret.begin(), ret.end());
-    cout << ret[ret.size()-1] << "\n";
-    cout << ret[0] << "\n";
+    cout << setw(k+1) << setfill('0') << max_value << endl;
+    cout << setw(k+1) << setfill('0') << min_value << endl;
     return 0;
 }
