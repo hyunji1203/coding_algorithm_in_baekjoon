@@ -1,17 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// 제지나 안뇽! 난 천사양!
-// 제지나 안뇽! 난 뽀또야!
-// 제지나 안뇽! 카악 퉤!
-
-// 1. 비트마스킹을 사용해 경우의 수를 나열한다
-// 2. 해당 경우의 수마다 area, other 두 구역으로 나눠진다
-// 3. 나눠진 두구역에 대해 순환(dfs)를 돌려본다
-// 4. 만일 돌렸을때 해당 구역이 다 순환되면 조건이 충족된다
-// 5. 조건이 충족되면 두 구역의 인구수 차를 구해 Min 함수를 통해 ret에 저장한다
-// 6. 이를 출력한다
-
 int N, aArea, bArea, aPo, bPo, ret=INT_MAX;
 int population[12], visited[12];
 vector<int> adj[10];
