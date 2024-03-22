@@ -1,11 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 typedef long long ll;
 
 ll n;
 double grade;
-priority_queue<double, vector<double>, greater<double>> pq;
+priority_queue<double> pq;
 
 int main(){
     ios_base::sync_with_stdio(0);
@@ -14,13 +13,20 @@ int main(){
     cin >> n;
     for(ll i=0; i<n; i++){
         cin >> grade;
-        pq.push(grade);
+        if(pq.size() == 7){
+            pq.push(grade);
+            pq.pop();
+        }else pq.push(grade);
     }
-
+    vector<double> v;
     for(int i=0; i<7; i++){
-        double temp = pq.top();
-        printf("%.3lf\n", temp);
+        v.push_back(pq.top());
         pq.pop();
+    }
+    reverse(v.begin(), v.end());
+
+    for(double it: v){
+        printf("%.3lf\n",it);
     }
 
     return 0;
