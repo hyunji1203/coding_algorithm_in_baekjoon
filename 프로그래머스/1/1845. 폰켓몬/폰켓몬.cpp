@@ -1,23 +1,26 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int a[200001];
+map<int, int> mp;
 
 int solution(vector<int> nums)
 {
     int answer = 0;
-    memset(a, 0, sizeof(a));
     
-    for(int it: nums){
-        a[it]++;
-    }
-    
-    for(int i=0; i<200001; i++){
-        if(answer >= nums.size()/2) break;
-        if(a[i] >= 1){
-            answer++;
-            a[i]--;
+    for(int i=0; i<nums.size(); i++) {
+        if (mp.find(nums[i]) == mp.end()) {
+            mp.insert({nums[i], 1});
+        } else {
+            mp[nums[i]] = mp[nums[i]] + 1;
         }
+    }
+    int aSize = nums.size() / 2;
+    if (mp.size() < aSize) {
+        answer = mp.size();
+    } else if(mp.size() > aSize) {
+        answer = aSize;
+    } else {
+        answer = aSize;
     }
     
     return answer;
